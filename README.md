@@ -1,3 +1,4 @@
+Url real de clonado: https://github.com/marialu2016/taller-base.git
 # Taller de IA generativa — Proyecto base
 
 Este es el punto de partida para el taller. No tiene ninguna integración con
@@ -15,7 +16,7 @@ npm install
 cp .env.example .env
 ```
 
-Abrí `.env` y completá `OPENAI_API_KEY` con la key que te va a dar el instructor.
+Abrí `.env` y completá `OPENAI_API_KEY` con la key que te va a dar la profe.
 
 ```bash
 npm run dev
