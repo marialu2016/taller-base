@@ -15,7 +15,7 @@ npm install
 cp .env.example .env
 ```
 
-Abrí `.env` y completá `OPENAI_API_KEY` con la key que te va a dar el instructor.
+Abrí `.env` y completá `OPENAI_API_KEY` con la key que te va a dar la profe.
 
 ```bash
 npm run dev
