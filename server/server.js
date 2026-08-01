@@ -1,22 +1,37 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-// const OpenAI = require('openai'); // Día 2: descomentar cuando armemos el proxy
+const OpenAI = require('openai');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Día 2: acá va a vivir la instancia del cliente de OpenAI
-// const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Ruta de prueba: sirve para confirmar que el servidor está vivo
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', mensaje: 'Servidor funcionando' });
 });
 
-// Día 2: acá va a ir la ruta POST /api/chat
-// Día 3: acá va a ir la ruta POST /api/chat-stream
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { mensaje } = req.body;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-5.4-mini',
+      messages: [
+        { role: 'system', content: 'Sos un asistente útil y conciso.' },
+        { role: 'user', content: mensaje }
+      ]
+    });
+
+    const respuesta = completion.choices[0].message.content;
+    res.json({ respuesta });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Algo salió mal' });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
