@@ -1,3 +1,4 @@
+Url real de clonado: https://github.com/marialu2016/taller-base.git
 # Taller de IA generativa — Proyecto base
 
 Este es el punto de partida para el taller. No tiene ninguna integración con
